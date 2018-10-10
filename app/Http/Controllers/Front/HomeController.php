@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Shop\Categories\Repositories\Interfaces\CategoryRepositoryInterface;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -24,7 +25,10 @@ class HomeController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index() {
+    public function index()
+    {
+
+        dd(DB::select('select * from categories'));
 
         $cat1 = $this->categoryRepo->findCategoryById(1);
         $cat2 = $this->categoryRepo->findCategoryById(2);

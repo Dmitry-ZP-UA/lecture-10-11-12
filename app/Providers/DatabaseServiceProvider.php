@@ -23,7 +23,7 @@ class DatabaseServiceProvider extends ServiceProvider
     {
         // Add database driver.
         $this->app->resolving('db', function ($db) {
-            $db->extend('collection', function ($config) {
+            $db->extend('mysql', function ($config) {
                 return new Connection($config);
             });
         });
