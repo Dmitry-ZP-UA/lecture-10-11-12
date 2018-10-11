@@ -13,9 +13,9 @@ class ProductImageRepository extends BaseRepository
 
     /**
      * ProductImageRepository constructor.
-     * @param ProductImage $productImage
+     * @param Images $productImage
      */
-    public function __construct(ProductImage $productImage)
+    public function __construct(Images $productImage)
     {
         parent::__construct($productImage);
         $this->model = $productImage;

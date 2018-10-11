@@ -7,9 +7,9 @@ use App\Models\Model;
 use App\Shop\Products\Product;
 use App\Shop\Products\Repositories\ProductRepository;
 
-class ProductImage extends Model
+class Images extends Model
 {
-    protected $table = 'product_images';
+    protected $table = 'images';
 
     protected $fillable = [
         'product_id',

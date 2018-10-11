@@ -6,7 +6,7 @@ use App\Exceptions\NotImplementedException;
 use App\Models\Model;
 use App\Shop\Categories\Category;
 use App\Shop\Categories\Repositories\CategoryRepository;
-use App\Shop\ProductImages\ProductImage;
+use App\Shop\ProductImages\Images;
 use App\Shop\ProductImages\ProductImageRepository;
 use App\Shop\Products\Repositories\ProductRepository;
 use Gloudemans\Shoppingcart\Contracts\Buyable;
@@ -82,7 +82,7 @@ class Product extends Model implements Buyable
      */
     public function getProductImageRepository() {
         return $this->productImageRepo ?:
-            $this->productImageRepo = new ProductImageRepository(new ProductImage());
+            $this->productImageRepo = new ProductImageRepository(new Images());
     }
 
     /**
