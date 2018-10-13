@@ -2,25 +2,23 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Shop\Categories\Repositories\CategoryRepository;
-use App\Shop\Categories\Repositories\Interfaces\CategoryRepositoryInterface;
+use App\Shop\Categories\Category;
 use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
     /**
-     * @var CategoryRepositoryInterface
+     * @var Category
      */
-    private $categoryRepo;
+    private $category;
 
     /**
      * CategoryController constructor.
-     *
-     * @param CategoryRepositoryInterface $categoryRepository
+     * @param Category $category
      */
-    public function __construct(CategoryRepositoryInterface $categoryRepository)
+    public function __construct(Category $category)
     {
-        $this->categoryRepo = $categoryRepository;
+        $this->category = $category;
     }
 
     /**
@@ -31,7 +29,7 @@ class CategoryController extends Controller
      */
     public function getCategory(string $slug)
     {
-        $category = $this->categoryRepo->findCategoryBySlug($slug);
+        $category = $this->category->where('slug', $slug);
 
         $products = $category->products()->where('status', 1)->all();
 
