@@ -18,4 +18,14 @@ class Product extends Model
     {
         $this->attributes['name'] = strtolower($name);
     }
+
+    public function scopeAvailable($query)
+    {
+        return $this->where('status', true);
+    }
+
+    public function scopeUnAvailable($query)
+    {
+        return $this->where('status', false);
+    }
 }
