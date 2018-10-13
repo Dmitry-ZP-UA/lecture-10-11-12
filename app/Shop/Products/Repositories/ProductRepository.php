@@ -6,7 +6,7 @@ use App\Repositories\BaseRepository;
 use App\Shop\Products\Exceptions\ProductCreateErrorException;
 use App\Shop\Products\Exceptions\ProductUpdateErrorException;
 //use App\Shop\Tools\UploadableTrait;
-use App\Shop\ProductImages\Images;
+use App\Shop\Images\Images2;
 use App\Shop\Products\Exceptions\ProductNotFoundException;
 use App\Shop\Products\Product;
 use App\Shop\Products\Repositories\Interfaces\ProductRepositoryInterface;
@@ -223,7 +223,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     {
         $collection->each(function (UploadedFile $file) {
             $filename = $this->storeFile($file);
-            $productImage = new Images([
+            $productImage = new Images2([
                 'product_id' => $this->model->id,
                 'src' => $filename
             ]);

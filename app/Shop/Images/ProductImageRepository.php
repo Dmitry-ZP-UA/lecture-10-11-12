@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Shop\ProductImages;
+namespace App\Shop\Images;
 
 use App\Repositories\BaseRepository;
 use App\Shop\Products\Product;
@@ -13,9 +13,9 @@ class ProductImageRepository extends BaseRepository
 
     /**
      * ProductImageRepository constructor.
-     * @param Images $productImage
+     * @param Images2 $productImage
      */
-    public function __construct(Images $productImage)
+    public function __construct(Images2 $productImage)
     {
         parent::__construct($productImage);
         $this->model = $productImage;
