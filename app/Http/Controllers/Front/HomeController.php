@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Shop\Categories\Category;
 use App\Shop\Categories\Repositories\Interfaces\CategoryRepositoryInterface;
+use App\Shop\Products\Product;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -11,15 +13,17 @@ class HomeController extends Controller
     /**
      * @var CategoryRepositoryInterface
      */
-    private $categoryRepo;
+    private $category;
+    private $product;
 
     /**
      * HomeController constructor.
-     * @param CategoryRepositoryInterface $categoryRepository
+     * @param Category $category
      */
-    public function __construct(CategoryRepositoryInterface $categoryRepository)
+    public function __construct(Category $category, Product $product)
     {
-        $this->categoryRepo = $categoryRepository;
+        $this->category = $category;
+        $this->product = $product;
     }
 
     /**
@@ -27,12 +31,22 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $category = $this->category->where('slug', 'be')->delete();
+        $product = [
+            'name' => 'HOHOHO',
+            'category_id' => '1',
+            'slug' => 'HOHOHO',
+            'description' => 'HOHOHO',
+            'price' => '102546',
+            'status' => '1',
+            'quantity' => '2',
+        ];
+        $this->product->create($product);
+        dd($product);
+        /*        $cat1 = $this->categoryRepo->findCategoryById(1);
+                $cat2 = $this->categoryRepo->findCategoryById(2);
 
-        dd(DB::select('select * from categories'));
-
-        $cat1 = $this->categoryRepo->findCategoryById(1);
-        $cat2 = $this->categoryRepo->findCategoryById(2);
-
-        return view('front.index', compact('cat1', 'cat2'));
+                return view('front.index', compact('cat1', 'cat2'));*/
     }
+
 }
