@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    protected $guarded = ['id'];
+    protected $guarded = ['id', 'slug'];
 
     /**
      * @param string $name
@@ -14,6 +14,7 @@ class Category extends Model
     public function setNameAttribute(string $name)
     {
         $this->attributes['name'] = strtolower(trim($name));
+        $this->attributes['slug'] = str_replace(' ', '-', trim(strtolower($name)));
     }
 
     /**
@@ -35,15 +36,6 @@ class Category extends Model
     }
 
     /**
-     * @param string $slug
-     */
-    public function setSlugAttribute(string $slug)
-    {
-        $newSlug = str_replace(' ', '-', trim(strtolower($slug)));
-        $this->attributes['slug'] = $newSlug;
-    }
-
-    /**
      * @param string $description
      */
     public function setDescriptionAttribute(string $description)
@@ -59,5 +51,4 @@ class Category extends Model
     {
         return $this->where('parent_id', null);
     }
-
 }
