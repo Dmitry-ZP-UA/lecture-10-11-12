@@ -32,8 +32,16 @@ class HomeController extends Controller
     public function index()
     {
 
-        $category = $this->category->allParentCategories()->get();
-        dd($category);
+        $product = [
+            'name' => 'Sasfhhjd Nnfjdhj HFFHGDGS hd',
+            'description' => 'kj;fdgfh jdkjhg  kjfdhgjhd    ',
+            'price' => '23.59',
+            'status' => '0',
+            'quantity' => '18',
+            'category_id' => '1',
+        ];
+        $product = $this->product->available()->get();
+        dd($product);
 
         /*        $cat1 = $this->categoryRepo->findCategoryById(1);
                 $cat2 = $this->categoryRepo->findCategoryById(2);
