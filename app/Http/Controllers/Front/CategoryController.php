@@ -22,10 +22,8 @@ class CategoryController extends Controller
     }
 
     /**
-     * Find the category via the slug
-     *
      * @param string $slug
-     * @return \App\Shop\Categories\Category2
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function getCategory(string $slug)
     {
