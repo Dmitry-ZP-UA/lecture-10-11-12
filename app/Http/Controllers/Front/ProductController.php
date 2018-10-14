@@ -14,15 +14,15 @@ class ProductController extends Controller
     /**
      * @var ProductRepositoryInterface
      */
-    private $productRepo;
+    private $product;
 
     /**
      * ProductController constructor.
-     * @param ProductRepositoryInterface $productRepository
+     * @param Product $product
      */
-    public function __construct(ProductRepositoryInterface $productRepository)
+    public function __construct(Product $product)
     {
-        $this->productRepo = $productRepository;
+        $this->product = $product;
     }
 
     /**
